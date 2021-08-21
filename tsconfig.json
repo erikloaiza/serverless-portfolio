@@ -1,0 +1,30 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": ["esnext"],
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipDefaultLibCheck": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "plugins": [
+      {
+        "name": "@divyenduz/ts-graphql-plugin"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*"]
+    },
+    "suppressExcessPropertyErrors": true
+  },
+  "include": ["src"],
+  "exclude": ["./node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "compileOnSave": true
+}
