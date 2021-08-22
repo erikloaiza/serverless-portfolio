@@ -5,6 +5,10 @@ Description: A sample SAM template for deploying Lambda functions.
 Globals:
   Function:
     Timeout: 180
+    Environment:
+      Variables:
+        AWS_ACCESS_KEY_ID: ""
+        AWS_SECRET_ACCESS_KEY: ""
 
 Resources:
   Api:
