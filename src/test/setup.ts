@@ -13,12 +13,12 @@ if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY)
   throw new Error(
     'Setup Environment First, see template.yml & copy environment variables to a root .env file'
   );
-console.log('id', (global as any).__id);
 
 //TODO: migrate portfolio creation to a "create" controller & setup tests based on it first
 
-export default async () => {
+const createBaseData = async () => {
   const portfolio = new Portfolio();
+  portfolio.id = global.__id; // Preserve id to ease testing
   portfolio.firstName = 'Jhon';
   portfolio.lastName = 'Doe';
   portfolio.description =
@@ -26,6 +26,22 @@ export default async () => {
   portfolio.profileImage = '';
   portfolio.twitterProfile = '';
   const portfolioDb = await mapper.put(portfolio);
-  console.log('gg2');
   portfolioDb.id; //TODO: set as global
+};
+
+const clearDatabase = async () => {
+  //If more data needs to be cleared add here
+  await mapper.ensureTableNotExists(Portfolio);
+  await mapper.ensureTableExists(Portfolio, {
+    readCapacityUnits: 5,
+    writeCapacityUnits: 5,
+  });
+};
+
+/**
+ * Process a setup before each test
+ */
+export default async () => {
+  await clearDatabase();
+  await createBaseData();
 };

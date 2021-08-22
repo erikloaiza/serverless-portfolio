@@ -20,10 +20,7 @@
       }
     ],
     "baseUrl": ".",
-    "paths": {
-      "*": ["*"]
-    },
-    "suppressExcessPropertyErrors": true
+    "suppressExcessPropertyErrors": true,
   },
   "include": ["src"],
   "exclude": ["./node_modules", "**/*.spec.ts", "**/*.test.ts"],
