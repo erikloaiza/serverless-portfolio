@@ -5,9 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>😎Serverless Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!--TODO: make styles per component-->
+    <style>
+      body,
+      html,
+      #root {
+        margin: 0;
+        height: 100vh;
+      }
+
+      body {
+        background: #12c2e9; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #12c2e9,
+          #c471ed,
+          #f64f59
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #12c2e9,
+          #c471ed,
+          #f64f59
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+
+      #root {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .GlassContainer {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .ProfilePic {
+        width: 200px;
+        height: 200px;
+        -webkit-border-radius: 200px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 200px;
+        -moz-background-clip: padding;
+        border-radius: 200px;
+        background-clip: padding-box;
+        margin: 7px 0 0 5px;
+        float: left;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .ProfilePic2 {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 50px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 50px;
+        -moz-background-clip: padding;
+        border-radius: 50px;
+        background-clip: padding-box;
+        margin: 7px 0 0 5px;
+        float: left;
+        background-size: cover;
+        background-position: center center;
+      }
+      .tweet {
+        cursor: pointer;
+      }
+      .tweet:hover {
+        transform: scale(1.1);
+      }
+    </style>
     <div id="root"></div>
   </body>
 </html>

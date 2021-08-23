@@ -1,8 +1,9 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
+    "experimentalDecorators": true,
     "jsx": "react",
-    "lib": ["esnext"],
+    "lib": ["esnext","DOM"],
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "skipDefaultLibCheck": true,
@@ -19,10 +20,7 @@
       }
     ],
     "baseUrl": ".",
-    "paths": {
-      "*": ["*"]
-    },
-    "suppressExcessPropertyErrors": true
+    "suppressExcessPropertyErrors": true,
   },
   "include": ["src"],
   "exclude": ["./node_modules", "**/*.spec.ts", "**/*.test.ts"],
