@@ -1,7 +1,10 @@
 import {APIGatewayEvent, Context} from 'aws-lambda';
 import {readFileSync} from 'fs';
 
-import {viewPortfolio} from '../api/controllers/portfolio.controller';
+import {
+  viewPortfolio,
+  getLastTweetsFromUser,
+} from '../api/controllers/portfolio.controller';
 
 import App from './app';
 
@@ -14,9 +17,13 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 
     const portfolio = await viewPortfolio(id);
 
+    const tweets = portfolio?.twitterProfile
+      ? await getLastTweetsFromUser(portfolio.twitterProfile, 5)
+      : [];
+
     const html = template.replace(
       '<div id="root"></div>',
-      `<div id="root">${App(portfolio)}</div>`
+      `<div id="root">${App({portfolio, tweets})}</div>`
     );
 
     console.log(App);

@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion : '2010-09-09'
+AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: A sample SAM template for deploying Lambda functions.
 
@@ -7,8 +7,12 @@ Globals:
     Timeout: 180
     Environment:
       Variables:
-        AWS_ACCESS_KEY_ID: ""
-        AWS_SECRET_ACCESS_KEY: ""
+        AWS_ACCESS_KEY_ID: 'AKIAR2GNX53DNPUJLJ56'
+        AWS_SECRET_ACCESS_KEY: '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'
+        TWITTER_API_KEY: 'KRy7l0v8wex3w8Sy5zThai3Ea'
+        TWITTER_API_SECRET: 'X2eBm0Y21kYEuR74W3Frqc2JVIizOj8Q1EVGatDsEVVEJo0ucu'
+        TWITTER_ACESS_TOKEN: '1220032047516921859-otvXjhExyUTZ5GLxssc9h5ORqtPZja'
+        TWITTER_ACESS_TOKEN_SECRET: 'tmJKqM4ORfQW6CH7wIVV8uKNpmSEmeFAP8lYwGb19uYjj'
 
 Resources:
   Api:
@@ -32,5 +36,5 @@ Resources:
         Api:
           Type: Api
           Properties:
-            Path: /
+            Path: /{id}
             Method: get
