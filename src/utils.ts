@@ -7,7 +7,6 @@ import {config} from 'dotenv';
  * - seed
  */
 export const setupEnv = () => {
-  console.log(path.resolve(__dirname + '/../.env'));
   config({
     path: path.resolve(__dirname + '/../.env'),
   });
