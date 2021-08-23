@@ -5,6 +5,12 @@ import {
   updatePortfolio,
 } from './controllers/portfolio.controller';
 
+/**
+ * Main handler for portfolio api , based on REST specification
+ *
+ * @param event the ApiGatewayEvent
+ * @returns Portfolio object
+ */
 export const handler = async (
   event: APIGatewayEvent
 ): Promise<APIGatewayProxyResult> => {
@@ -23,12 +29,7 @@ export const handler = async (
       case 'GET':
         {
           const portfolio = await viewPortfolio(id);
-          if (!portfolio)
-            return {
-              statusCode: 404,
-              body: 'portfolio not found',
-            };
-          body = JSON.stringify(portfolio);
+          if (portfolio) body = JSON.stringify(portfolio);
         }
         break;
 
@@ -43,12 +44,7 @@ export const handler = async (
             id,
             ...JSON.parse(event.body),
           });
-          if (!portfolio)
-            return {
-              statusCode: 404,
-              body: 'portfolio not found',
-            };
-          body = JSON.stringify(portfolio);
+          if (portfolio) body = JSON.stringify(portfolio);
         }
         break;
 
@@ -59,9 +55,15 @@ export const handler = async (
         };
     }
 
+    if (!body)
+      return {
+        statusCode: 404,
+        body: 'portfolio not found',
+      };
+
     return {
       statusCode: 200,
-      body: body || '',
+      body: body,
     };
   } catch (error) {
     console.log(error);

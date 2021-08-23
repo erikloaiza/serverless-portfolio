@@ -1,19 +1,8 @@
-import path from 'path';
-// eslint-disable-next-line node/no-unpublished-require
-require('dotenv').config({
-  path: path.resolve(__dirname + '../../../.env'),
-});
-
-//after env
+import {setupEnv} from '../utils';
+setupEnv();
 
 import Portfolio from '../api/models/portfolio';
 import {mapper} from '../api/constants';
-
-if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY)
-  throw new Error(
-    'Setup Environment First, see template.yml & copy environment variables to a root .env file'
-  );
-
 //TODO: migrate portfolio creation to a "create" controller & setup tests based on it first
 
 const createBaseData = async () => {

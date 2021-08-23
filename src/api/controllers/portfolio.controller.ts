@@ -1,6 +1,12 @@
 import Portfolio from '../models/portfolio';
 import {mapper} from '../constants';
 
+/**
+ * gets portfolio from database
+ *
+ * @param id portfolio id
+ * @returns portfolio
+ */
 export const viewPortfolio = async (id: Portfolio['id']) => {
   try {
     const portfolio = new Portfolio();
@@ -12,6 +18,12 @@ export const viewPortfolio = async (id: Portfolio['id']) => {
   }
 };
 
+/**
+ * updates portfolio from database
+ *
+ * @param params portfolio params
+ * @returns portfolio
+ */
 export const updatePortfolio = async (
   params: Pick<Portfolio, 'id'> & Partial<Omit<Portfolio, 'id'>>
 ) => {
